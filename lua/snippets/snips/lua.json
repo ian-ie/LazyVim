@@ -19,7 +19,8 @@
             "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${1:, fatherclass})",
             "function ${TM_FILENAME_BASE}:init()",
             "\t${2:-- init code}",
-            "end"
+            "end",
+            "return ${TM_FILENAME_BASE}"
         ],
         "description": "文件名的tclass模板"
     },
