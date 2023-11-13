@@ -1,4 +1,8 @@
 return {
+    {
+        "folke/flash.nvim",
+        opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } },
+    },
     { "echasnovski/mini.surround", enabled = true },
     { "ahmedkhalf/project.nvim", opts = { patterns = { ".git", ".svn", ".vscode" }, manual_mode = false } },
 
