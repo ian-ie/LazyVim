@@ -3,7 +3,12 @@ return {
         "folke/flash.nvim",
         opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } },
     },
-    { "echasnovski/mini.surround", enabled = true },
+    {
+        "LazyVim/LazyVim",
+        opts = {
+            -- colorscheme = "catppuccin",
+        },
+    },
     { "ahmedkhalf/project.nvim", opts = { patterns = { ".git", ".svn", ".vscode" }, manual_mode = false } },
 
     -- Use <tab> for completion and snippets (supertab)
