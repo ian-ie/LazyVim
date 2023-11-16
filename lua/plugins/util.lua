@@ -8,6 +8,21 @@ return {
         },
     },
     {
+        "sindrets/winshift.nvim",
+        config = function()
+            -- Lua
+            require("winshift").setup({
+                window_picker = function()
+                    return require("win-picker").pick_win()
+                end,
+            })
+        end,
+        keys = {
+            { "<leader>wm", "<cmd>WinShift<cr>", desc = "Window Move" },
+            { "<leader>ws", "<cmd>WinShift swap<cr>", desc = "Window Swap" },
+        },
+    },
+    {
         "meeehdi-dev/win-picker.nvim",
         opts = {
             chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -22,17 +37,11 @@ return {
             vim.api.nvim_command("hi def WinPicker gui=bold guifg=#1d202f guibg=#7aa2f7")
             require("win-picker").setup(opts)
         end,
+        -- stylua: ignore
         keys = {
-            {
-                "<leader>wp",
-                function()
-                    local win_id = require("win-picker").pick_win()
-                    if win_id then
-                        vim.api.nvim_set_current_win(win_id)
-                    end
-                end,
-                desc = "Windows pick",
-            },
+            { "<leader>wp", function() local win_id = require("win-picker").pick_win() if win_id then vim.api.nvim_set_current_win(win_id) end end, desc = "Windows Pick", },
+            { "<leader>wx", function() local win_id = require("win-picker").pick_win() if win_id then vim.api.nvim_win_close(win_id, false) end end, desc = "Windows Close", },
+            { "<leader>wO", function() local win_id = require("win-picker").pick_win() if win_id then vim.api.nvim_set_current_win(win_id) vim.api.nvim_command("only") end end, desc = "Windows Pcik Only", },
         },
     },
 }

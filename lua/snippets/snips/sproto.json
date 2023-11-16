@@ -38,5 +38,10 @@
             "}"
         ],
         "description": "sproto sync"
+    },
+    "sproto field": {
+        "scope": "sproto",
+        "prefix": "fd",
+        "body": "${1:field} ${2:number} : ${3:type}"
     }
 }

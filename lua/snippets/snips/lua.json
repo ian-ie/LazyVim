@@ -47,5 +47,9 @@
     "+=": {
         "prefix": "add",
         "body": "${1:base} = ${1} + ${2:add}"
+    },
+    "stylua": {
+        "prefix": "si",
+        "body": "-- stylua: ignore"
     }
 }
