@@ -6,6 +6,13 @@ return {
             { "gt", "<cmd>TranslateW<cr>", desc = "to cn", mode = { "n", "v" } },
             { "gT", "<cmd>TranslateW --target_lang=en<cr>", desc = "to en", mode = { "v", "n" } },
         },
+        {
+            "folke/zen-mode.nvim",
+            opts = {},
+            keys = {
+                { "<leader>z", "<cmd>ZenMode<cr>", desc = "ZenMode" },
+            },
+        },
     },
     {
         "sindrets/winshift.nvim",
@@ -43,5 +50,10 @@ return {
             { "<leader>wx", function() local win_id = require("win-picker").pick_win() if win_id then vim.api.nvim_win_close(win_id, false) end end, desc = "Windows Close", },
             { "<leader>wO", function() local win_id = require("win-picker").pick_win() if win_id then vim.api.nvim_set_current_win(win_id) vim.api.nvim_command("only") end end, desc = "Windows Pcik Only", },
         },
+    },
+    {
+        "nvim-zh/colorful-winsep.nvim",
+        config = true,
+        event = { "WinNew" },
     },
 }

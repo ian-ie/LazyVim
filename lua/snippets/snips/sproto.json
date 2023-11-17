@@ -41,7 +41,7 @@
     },
     "sproto field": {
         "scope": "sproto",
-        "prefix": "fd",
+        "prefix": "f",
         "body": "${1:field} ${2:number} : ${3:type}"
     }
 }

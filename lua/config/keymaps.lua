@@ -5,6 +5,8 @@ vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buff
 vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bs", "<cmd>BufferLineSortByDirectory<cr>", { desc = "Sort by directory" })
 vim.keymap.set("n", "<leader>bS", "<cmd>BufferLineSortByExtension<cr>", { desc = "Sort by extension" })
+vim.keymap.set("n", "<leader>bf", "<cmd>BufferLinePick<cr>", { desc = "Sort by extension" })
+vim.keymap.set("n", "<leader>bx", "<cmd>BufferLinePickClose<cr>", { desc = "Sort by extension" })
 vim.keymap.set("n", "<leader>W", "<cmd>w<cr><esc>", { desc = "Save", remap = true })
 
 vim.keymap.set({ "n", "x" }, "H", "^")
@@ -20,5 +22,5 @@ vim.keymap.set(
 )
 
 -- windows
-vim.keymap.set("n", "<leader>ws", "<C-W>V", { desc = "vsplit window", remap = true })
+vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "vsplit window", remap = true })
 vim.keymap.set("n", "<leader>wo", "<C-W>o", { desc = "Window Only", remap = true })
