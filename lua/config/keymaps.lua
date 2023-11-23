@@ -9,9 +9,9 @@ vim.keymap.set("n", "<leader>bf", "<cmd>BufferLinePick<cr>", { desc = "Sort by e
 vim.keymap.set("n", "<leader>bx", "<cmd>BufferLinePickClose<cr>", { desc = "Sort by extension" })
 vim.keymap.set("n", "<leader>W", "<cmd>w<cr><esc>", { desc = "Save", remap = true })
 
-vim.keymap.set({ "n", "x" }, "H", "^")
-vim.keymap.set({ "n", "x" }, "L", "$")
-vim.keymap.set({ "n", "x" }, "go", "%")
+vim.keymap.set({ "n", "x", "o" }, "H", "^")
+vim.keymap.set({ "n", "x", "o" }, "L", "$")
+vim.keymap.set({ "n", "x", "o" }, "go", "%")
 vim.keymap.set("n", "yaa", "<cmd>%y+<cr>", { desc = "copy all" })
 
 vim.keymap.set(
