@@ -6,7 +6,7 @@
             "--- @param player PlayerDb",
             "function REQUEST.${1:sprotoreq}(player, request)",
             "\t${3:--code}",
-            "\tretutn ${4:--retrun msg}",
+            "\treturn ${4:--retrun msg}",
             "end"
         ],
         "description": "sproto request"

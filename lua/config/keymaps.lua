@@ -22,5 +22,5 @@ vim.keymap.set(
 )
 
 -- windows
-vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "vsplit window", remap = true })
+vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Vsplit Window", remap = true })
 vim.keymap.set("n", "<leader>wo", "<C-W>o", { desc = "Window Only", remap = true })

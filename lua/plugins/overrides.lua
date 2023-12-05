@@ -3,14 +3,24 @@ return {
         "folke/flash.nvim",
         opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } },
     },
+    { "ahmedkhalf/project.nvim", opts = { patterns = { ".git", ".svn", ".vscode" }, manual_mode = false } },
     {
-        "LazyVim/LazyVim",
+        "folke/noice.nvim",
         opts = {
-            -- colorscheme = "catppuccin",
+            presets = {
+                bottom_search = false, -- use a classic bottom cmdline for search
+            },
+            ---@type NoiceConfigViews
+            views = {
+                cmdline_popup = {
+                    position = {
+                        row = "35%",
+                        col = "50%",
+                    },
+                },
+            },
         },
     },
-    { "ahmedkhalf/project.nvim", opts = { patterns = { ".git", ".svn", ".vscode" }, manual_mode = false } },
-
     -- Use <tab> for completion and snippets (supertab)
     -- first: disable default <tab> and <s-tab> behavior in LuaSnip
     {
