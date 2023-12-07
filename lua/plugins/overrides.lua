@@ -10,15 +10,6 @@ return {
             presets = {
                 bottom_search = false, -- use a classic bottom cmdline for search
             },
-            ---@type NoiceConfigViews
-            views = {
-                cmdline_popup = {
-                    position = {
-                        row = "35%",
-                        col = "50%",
-                    },
-                },
-            },
         },
     },
     -- Use <tab> for completion and snippets (supertab)
