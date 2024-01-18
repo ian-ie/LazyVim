@@ -7,6 +7,9 @@ return {
                 temp_dir = "~/.config/nvim/lua/templates",
             })
         end,
+        keys = {
+            { "<leader>t", ":Template ", desc = "template" },
+        },
     },
     {
         "kawre/leetcode.nvim",
