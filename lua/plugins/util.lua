@@ -1,5 +1,14 @@
 return {
     {
+        "glepnir/template.nvim",
+        cmd = { "Template" },
+        config = function()
+            require("template").setup({
+                temp_dir = "~/.config/nvim/lua/templates",
+            })
+        end,
+    },
+    {
         "kawre/leetcode.nvim",
         build = ":TSUpdate html",
         dependencies = {
@@ -17,6 +26,7 @@ return {
             cn = {
                 enabled = true,
             },
+            lang = "python3",
         },
     },
     {
