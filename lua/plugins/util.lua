@@ -8,7 +8,7 @@ return {
             })
         end,
         keys = {
-            { "<leader>t", ":Template ", desc = "template" },
+            { "<leader>tt", ":Template ", desc = "template" },
         },
     },
     {
@@ -33,12 +33,14 @@ return {
         },
     },
     {
-        "voldikss/vim-translator",
+        "potamides/pantran.nvim",
+        opts = {},
         keys = {
-            { "gt", "<cmd>TranslateW<cr>", desc = "to cn", mode = { "n", "v" } },
-            { "gT", "<cmd>TranslateW --target_lang=en<cr>", desc = "to en", mode = { "v", "n" } },
+            { "<leader>tr", ":Pantran<CR> ", desc = "Pantran" },
+            { "<leader>tc", ":Pantran target=zh<CR> ", desc = "Pantran zh" },
         },
     },
+
     {
         "folke/zen-mode.nvim",
         opts = {},
