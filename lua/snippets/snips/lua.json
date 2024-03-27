@@ -19,23 +19,10 @@
             "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${1:, fatherclass})",
             "function ${TM_FILENAME_BASE}:init()",
             "\t${2:-- init code}",
-            "end",
+            "end\n",
             "return ${TM_FILENAME_BASE}"
         ],
         "description": "文件名的tclass模板"
-    },
-    "tclass": {
-        "scope": "lua",
-        "prefix": "tclass",
-        "body": [
-            "--- @class ${TM_FILENAME_BASE}: TCLASS${1: ,fatherclass}",
-            "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${1:, fatherclass})\n",
-            "function ${TM_FILENAME_BASE}:init()",
-            "\t${2:-- init code}",
-            "end",
-            "return ${TM_FILENAME_BASE}"
-        ],
-        "description": "自定义的tclass模板"
     },
     "ff": {
         "prefix": "ff",
