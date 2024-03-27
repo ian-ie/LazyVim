@@ -26,6 +26,30 @@ return {
             })
         end,
     },
+    {
+        "rareitems/printer.nvim",
+        config = function()
+            require("printer").setup({
+                keymap = "gP", -- Plugin doesn't have any keymaps by default
+                behavior = "insert_below", -- how operator should behave
+                -- "insert_below" will insert the text below the cursor
+                --  "yank" will not insert but instead put text into the default '"' register
+                formatters = {
+                    lua = function(inside, variable)
+                        return string.format('sysLog.debug("%s: " .. %s)', variable, variable)
+                    end,
+                },
+                -- function which modifies the text inside string in the print statement, by default it adds the path and line number
+                add_to_inside = function(text)
+                    return string.format("[%s:%s] %s", vim.fn.expand("%"), vim.fn.line("."), text)
+                end,
+            })
+
+            -- keymap to always insert below the debug print
+            vim.keymap.set("n", "gpp", "<Plug>(printer_below)")
+            vim.keymap.set("v", "gpp", "<Plug>(printer_below)")
+        end,
+    },
     -- 多光标
     {
         "mg979/vim-visual-multi",
