@@ -45,7 +45,12 @@ return {
                 --  "yank" will not insert but instead put text into the default '"' register
                 formatters = {
                     lua = function(inside, variable)
-                        return string.format('sysLog.debug("%s: " .. %s)', variable, variable)
+                        return string.format(
+                            'sysLog.debug("%s:%s: " .. %s)',
+                            vim.fn.expand("%:t:r"),
+                            variable,
+                            variable
+                        )
                     end,
                 },
                 -- function which modifies the text inside string in the print statement, by default it adds the path and line number
@@ -55,25 +60,21 @@ return {
             })
         end,
     },
-    -- 多光标
     {
-        "mg979/vim-visual-multi",
+        "smoka7/multicursors.nvim",
         event = "VeryLazy",
-        branch = "master",
-        enable = false,
-        init = function()
-            vim.g.VM_maps = {
-                ["Find Under"] = "<C-n>",
-                -- ["Find Subword Under"] = "<C-u>",
-                -- ["Select All"] = "<C-a>",
-                -- ["Select h"] = "<C-h>",
-                -- ["Select l"] = "<C-l>",
-                ["Add Cursor Up"] = "<C-k>",
-                ["Add Cursor Down"] = "<C-j>",
-                ["Add Cursor At Pos"] = "<C-c>",
-                -- ["Add Cursor At Word"] = "<C-w>",
-                ["Remove Region"] = "q",
-            }
-        end,
+        dependencies = {
+            "smoka7/hydra.nvim",
+        },
+        opts = {},
+        cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+        keys = {
+            {
+                "<Leader>m",
+                "<cmd>MCstart<cr>",
+                mode = { "v", "n" },
+                desc = "Create a selection for selected text or word under the cursor",
+            },
+        },
     },
 }
