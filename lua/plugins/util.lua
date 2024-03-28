@@ -1,13 +1,5 @@
 return {
-    {
-        "adelarsq/neovcs.vim",
-        keys = {
-            "<leader>v",
-        },
-        config = function()
-            require("neovcs").setup()
-        end,
-    },
+    { "arnamak/stay-centered.nvim", opts = {} },
     {
         "ghillb/cybu.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
