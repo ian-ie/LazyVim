@@ -13,27 +13,6 @@ return {
         },
     },
     {
-        "ghillb/cybu.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
-        config = function()
-            require("cybu").setup({
-                position = {
-                    anchor = "centerleft",
-                },
-                style = {
-                    path = "tail",
-                },
-            })
-        end,
-        keys = {
-            { "<s-tab>", "<Plug>(CybuPrev)", desc = "CybuPrev" },
-            { "<tab>", "<Plug>(CybuNext)", desc = "CybuNext" },
-            -- { "<tab>", "<Plug>(CybuLastusedPrev)", desc = "CybuPrev" },
-            -- { "<s-tab>", "<Plug>(CybuLastusedNext)", desc = "CybuPrev" },
-        },
-    },
-
-    {
         "JuanZoran/Trans.nvim",
         build = function()
             require("Trans").install()
