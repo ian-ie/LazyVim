@@ -1,16 +1,17 @@
 return {
     {
-        "lukas-reineke/indent-blankline.nvim",
-        enabled = false,
+        "hedyhli/outline.nvim",
+        config = function()
+            require("outline").setup({
+                outline_window = {
+                    position = "left",
+                },
+            })
+        end,
     },
-    {
-        "echasnovski/mini.indentscope",
-        enabled = false,
-    },
-    {
-        "folke/flash.nvim",
-        opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } },
-    },
+    { "lukas-reineke/indent-blankline.nvim", enabled = false },
+    { "echasnovski/mini.indentscope", enabled = false },
+    { "folke/flash.nvim", opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } } },
     { "ahmedkhalf/project.nvim", opts = { patterns = { ".git", ".svn", ".vscode" }, manual_mode = false } },
     {
         "folke/noice.nvim",
