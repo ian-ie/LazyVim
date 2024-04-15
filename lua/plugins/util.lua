@@ -1,5 +1,6 @@
 return {
     { "arnamak/stay-centered.nvim", opts = {} },
+    { "terryma/vim-expand-region" },
     {
         "LintaoAmons/bookmarks.nvim",
         dependencies = {
