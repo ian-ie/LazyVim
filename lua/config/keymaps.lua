@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<leader><enter>", "<cmd>Telescope buffers<cr>", { desc = "Find Buffer" })
 vim.keymap.set("n", "<leader>bs", "<cmd>BufferLineSortByDirectory<cr>", { desc = "Sort by directory" })
 vim.keymap.set("n", "<leader>bS", "<cmd>BufferLineSortByExtension<cr>", { desc = "Sort by extension" })
 vim.keymap.set("n", "<leader>bf", "<cmd>BufferLinePick<cr>", { desc = "Jump Pick Buffer" })

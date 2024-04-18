@@ -32,6 +32,10 @@
             "end"
         ]
     },
+    "fn": {
+        "prefix": "fn",
+        "body": "${TM_FILENAME_BASE}"
+    },
     "fi": {
         "prefix": "fi",
         "body": "--- @field "

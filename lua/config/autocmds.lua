@@ -4,7 +4,7 @@
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
-    command = "setlocal formatoptions-=r formatoptions-=o",
+    command = "setlocal formatoptions-=r formatoptions-=o fileformats=unix",
 })
 
 vim.api.nvim_create_autocmd("ModeChanged", {
