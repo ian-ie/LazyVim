@@ -72,4 +72,36 @@ return {
             },
         },
     },
+
+    --- neorg
+    {
+        "vhyrro/luarocks.nvim",
+        priority = 1000,
+        config = true,
+        lazy = true,
+    },
+    {
+        "nvim-neorg/neorg",
+        dependencies = { "luarocks.nvim" },
+        cmd = "Neorg",
+        version = "*", -- Pin Neorg to the latest stable release
+        keys = {
+            { "<leader>n", "<cmd>Neorg index<cr>", desc = "Neorg Index" },
+            { "<leader>r", "<cmd>Neorg return<cr>", desc = "Neorg Return" },
+        },
+        opts = {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/notes",
+                        },
+                        default_workspace = "notes",
+                    },
+                },
+            },
+        },
+    },
 }

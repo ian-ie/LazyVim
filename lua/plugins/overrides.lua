@@ -9,6 +9,20 @@ return {
             })
         end,
     },
+    {
+        "which-key.nvim",
+        opts = {
+            defaults = {
+                ["<localleader>"] = {
+                    i = { name = "+insert", ["🚫"] = "which_key_ignore" },
+                    l = { name = "+list", ["🚫"] = "which_key_ignore" },
+                    m = { name = "+mode", ["🚫"] = "which_key_ignore" },
+                    n = { name = "+note", ["🚫"] = "which_key_ignore" },
+                    t = { name = "+mark", ["🚫"] = "which_key_ignore" },
+                },
+            },
+        },
+    },
     { "lukas-reineke/indent-blankline.nvim", enabled = false },
     { "echasnovski/mini.indentscope", enabled = false },
     { "folke/flash.nvim", opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } } },
