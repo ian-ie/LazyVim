@@ -7,25 +7,6 @@ return {
             { "k", "<Plug>(accelerated_jk_gk)", mode = "n" },
         },
     },
-    -- C-a 增强
-    {
-        "monaqa/dial.nvim",
-        keys = {
-            { "<C-a>", "<Plug>(dial-increment)", desc = "dial-increment" },
-            { "<C-x>", "<Plug>(dial-decrement)", desc = "dial-decrement" },
-        },
-        config = function()
-            local augend = require("dial.augend")
-            require("dial.config").augends:register_group({
-                default = {
-                    augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-                    augend.constant.alias.bool, -- boolean value (true <-> false)
-                    augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-                    augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-                },
-            })
-        end,
-    },
     {
         "Wansmer/treesj",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
