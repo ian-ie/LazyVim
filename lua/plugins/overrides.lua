@@ -40,15 +40,12 @@ return {
     {
         "L3MON4D3/LuaSnip",
         keys = function()
-            require("luasnip.loaders.from_vscode").load({ paths = "~/.config/nvim/lua/snippets/" })
+            require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/snippets/" })
         end,
     },
     -- then: setup supertab in cmp
     {
         "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-emoji",
-        },
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
             local has_words_before = function()
