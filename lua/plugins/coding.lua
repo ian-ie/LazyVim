@@ -58,4 +58,25 @@ return {
         -- available after the first executing of it or after a keymap of text-case.nvim has been used.
         lazy = false,
     },
+    {
+        "michaelb/sniprun",
+        branch = "master",
+
+        build = "sh install.sh",
+        -- do 'sh install.sh 1' if you want to force compile locally
+        -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+
+        config = function()
+            require("sniprun").setup({
+                -- your options
+            })
+        end,
+        keys = {
+            { "<leader>rf", "<cmd>%SnipRun<cr>", desc = "run file" },
+            { "<leader>rs", "<Plug>SnipRun", desc = "run snip" },
+            { "<leader>rc", "<Plug>SnipClose", desc = "close" },
+            { "<leader>cr", "<Plug>SnipReset", desc = "reset" },
+            { "<leader>r", "<Plug>SnipRun", desc = "run", mode = "v" },
+        },
+    },
 }

@@ -26,7 +26,10 @@ return {
     -- { "lukas-reineke/indent-blankline.nvim", enabled = true },
     -- { "echasnovski/mini.indentscope", enabled = false },
     { "folke/flash.nvim", opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } } },
-    { "ahmedkhalf/project.nvim", opts = { patterns = { ".git", ".svn", ".vscode" }, manual_mode = false } },
+    {
+        "ahmedkhalf/project.nvim",
+        opts = { patterns = { ".git", ".svn", ".vscode", "pyvenv.cfg", "pyproject.toml" }, manual_mode = false },
+    },
     {
         "folke/noice.nvim",
         opts = {
