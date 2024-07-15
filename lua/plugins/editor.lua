@@ -26,7 +26,13 @@ return {
                 --  "yank" will not insert but instead put text into the default '"' register
                 formatters = {
                     lua = function(inside, variable)
-                        return string.format('sysLog.debug("%s:%s: ", %s)', vim.fn.expand("%:t:r"), variable, variable)
+                        local function trans(input)
+                            local functionName, param = input:match("([^%(]+)%(([^%)]+)%)")
+                            return functionName, param
+                        end
+                        local func, param = trans(variable)
+                        vim.notify(string.format('sysLog.debug("%s,%s:", %s)', func, param, param))
+                        return string.format('sysLog.debug("%s,%s:", %s)', func, param, param)
                     end,
                 },
                 -- function which modifies the text inside string in the print statement, by default it adds the path and line number
