@@ -3,7 +3,6 @@
         "scope": "lua",
         "prefix": "sreq",
         "body": [
-            "--- @param player PlayerDb",
             "function REQUEST.${1:sprotoreq}(player, request)",
             "\t${3:--code}",
             "\treturn ${4:--retrun msg}",

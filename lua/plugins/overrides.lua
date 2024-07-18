@@ -40,14 +40,19 @@ return {
         "hrsh7th/nvim-cmp",
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
-            local has_words_before = function()
+            local cursor_after_pairs = function()
                 unpack = unpack or table.unpack
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0
-                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+                local line_text = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+                if col == #line_text then
+                    return false
+                end
+                local char_after_cursor = line_text:sub(col + 1, col + 1)
+                return char_after_cursor:match("[)}%]'\"]>") ~= nil
             end
 
             local cmp = require("cmp")
+            local neotab = require("neotab")
 
             opts.mapping = vim.tbl_extend("force", opts.mapping, {
                 ["<Tab>"] = cmp.mapping(function(fallback)
@@ -58,8 +63,8 @@ return {
                         vim.schedule(function()
                             vim.snippet.jump(1)
                         end)
-                    elseif has_words_before() then
-                        cmp.complete()
+                    elseif cursor_after_pairs() then
+                        neotab.tabout()
                     else
                         fallback()
                     end

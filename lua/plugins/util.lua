@@ -1,5 +1,5 @@
 return {
-    { "arnamak/stay-centered.nvim", opts = {} },
+    { "arnamak/stay-centered.nvim", opts = {}, enabled = true },
     {
         "LintaoAmons/bookmarks.nvim",
         dependencies = {

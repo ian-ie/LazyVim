@@ -1,4 +1,23 @@
 return {
+    {
+        "kawre/leetcode.nvim",
+        build = ":TSUpdate html",
+        opts = {
+            arg = "lt",
+            lang = "python3",
+            injector = {
+                ["python3"] = { before = true },
+            },
+            cn = {
+                enabled = true,
+            },
+        },
+    },
+    {
+        "kawre/neotab.nvim",
+        event = "InsertEnter",
+        opts = {},
+    },
     { "max397574/better-escape.nvim", opts = {} },
     { "spin6lock/vim_sproto", ft = "sproto" },
     { "echasnovski/mini.align", version = false, opts = {} },
