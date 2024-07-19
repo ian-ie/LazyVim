@@ -6,7 +6,7 @@ return {
             arg = "lt",
             lang = "python3",
             injector = {
-                ["python3"] = { before = true },
+                ["python3"] = { before = { "from math import inf", "from typing import List" } },
             },
             cn = {
                 enabled = true,
