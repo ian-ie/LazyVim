@@ -63,10 +63,10 @@ return {
                         vim.schedule(function()
                             vim.snippet.jump(1)
                         end)
-                    elseif cursor_after_pairs() then
-                        neotab.tabout()
                     else
-                        fallback()
+                        neotab.tabout()
+                        -- else
+                        --     fallback()
                     end
                 end, { "i", "s" }),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)

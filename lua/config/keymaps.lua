@@ -19,13 +19,6 @@ vim.keymap.set({ "n", "x", "o" }, "L", "$")
 vim.keymap.set({ "n", "x", "o" }, "go", "%")
 vim.keymap.set("n", "yaa", "<cmd>%y+<cr>", { desc = "copy all" })
 
-vim.keymap.set(
-    "n",
-    "<leader>sr",
-    '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-    { desc = "Search current word" }
-)
-
 -- windows
 vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Vsplit Window", remap = true })
 vim.keymap.set("n", "<leader>wo", "<C-W>o", { desc = "Window Only", remap = true })
