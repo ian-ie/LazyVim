@@ -1,17 +1,31 @@
 return {
-    { "arnamak/stay-centered.nvim", opts = {}, enabled = true },
     {
-        "LintaoAmons/bookmarks.nvim",
-        dependencies = {
-            "stevearc/dressing.nvim", -- optional: to have the same UI shown in the GIF
-        },
+        "nvim-neorg/neorg",
+        lazy = false,
+        version = "*",
         keys = {
-            { "mm", "<cmd>BookmarksMark<cr>", desc = "Mark current line into active BookmarkList." },
-            { "mg", "<cmd>BookmarksGoto<cr>", desc = "Go to bookmark at current active BookmarkList" },
-            { "mc", "<cmd>BookmarksCommands<cr>", desc = "Find and trigger a bookmark command." },
-            { "mo", "<cmd>BookmarksGotoRecent<cr>", desc = "Go to latest visited/created Bookmark" },
+            { "<LocalLeader>n", "<cmd>Neorg index<cr>", desc = "Neorg Index" },
+            { "<LocalLeader>r", "<cmd>Neorg return<cr>", desc = "Neorg Return" },
+            { "<LocalLeader>N", "<Plug>(neorg.dirman.new-note)", desc = "New Note" },
         },
+        config = function()
+            require("neorg").setup({
+                load = {
+                    ["core.defaults"] = {},
+                    ["core.concealer"] = {},
+                    ["core.dirman"] = {
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                            },
+                            default_workspace = "notes",
+                        },
+                    },
+                },
+            })
+        end,
     },
+    { "arnamak/stay-centered.nvim", opts = {}, enabled = true },
     {
         "JuanZoran/Trans.nvim",
         build = function()
@@ -74,7 +88,7 @@ return {
             })
         end,
         keys = {
-            { "<leader>wm", "<cmd>WinShift<cr>", desc = "Window Move" },
+            { "<leader>wM", "<cmd>WinShift<cr>", desc = "Window Move" },
             { "<leader>ws", "<cmd>WinShift swap<cr>", desc = "Window Swap" },
         },
     },

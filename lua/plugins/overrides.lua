@@ -40,7 +40,7 @@ return {
         "hrsh7th/nvim-cmp",
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
-            table.insert(opts.sources, 1, { name = "fittencode", group_index = 1 })
+            table.insert(opts.sources, { name = "fittencode", group_index = 1, priority = 99 })
             opts.formatting.format = LazyVim.inject.args(opts.formatting.format, function(entry, item)
                 -- Hide percentage in the menu
                 if entry.source.name == "fittencode" then
@@ -50,7 +50,6 @@ return {
             end)
 
             local cmp = require("cmp")
-            local neotab = require("neotab")
 
             opts.mapping = vim.tbl_extend("force", opts.mapping, {
                 ["<Tab>"] = cmp.mapping(function(fallback)
@@ -62,9 +61,7 @@ return {
                             vim.snippet.jump(1)
                         end)
                     else
-                        neotab.tabout()
-                        -- else
-                        --     fallback()
+                        fallback()
                     end
                 end, { "i", "s" }),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
