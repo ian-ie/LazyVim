@@ -1,5 +1,38 @@
 return {
     {
+        "LintaoAmons/bookmarks.nvim",
+        dependencies = {
+            { "nvim-telescope/telescope.nvim" },
+            { "stevearc/dressing.nvim" }, -- optional: to have the same UI shown in the GIF
+        },
+        opts = {
+            signs = { mark = { icon = "🚩", color = "#86e1fc" } },
+        },
+        keys = {
+            {
+                "mm",
+                "<cmd>BookmarksMark<cr>",
+                desc = "Mark current line into active BookmarkList.",
+                mode = { "n", "v" },
+            },
+            {
+                "mo",
+                "<cmd>BookmarksGoto<cr>",
+                desc = "Go to bookmark at current active BookmarkList",
+                mode = { "n", "v" },
+            },
+            { "ma", "<cmd>BookmarksCommands<cr>", desc = "Find and trigger a bookmark command.", mode = { "n", "v" } },
+            {
+                "mg",
+                "<cmd>BookmarksGotoRecent<cr>",
+                desc = "Go to latest visited/created Bookmark",
+                mode = { "n", "v" },
+            },
+        },
+    },
+
+    { "toppair/reach.nvim", lazy = false, opts = { show_current = true } },
+    {
         "nvim-neorg/neorg",
         lazy = false,
         version = "*",
@@ -24,6 +57,14 @@ return {
                 },
             })
         end,
+    },
+    {
+        "metakirby5/codi.vim",
+        cmd = "Codi",
+        keys = {
+            { "<LocalLeader>cs", "<cmd>CodiSelect<cr>", desc = "Code Select" },
+            { "<LocalLeader>ce", "<cmd>CodiExpand<cr>", desc = "Code Expand" },
+        },
     },
     { "arnamak/stay-centered.nvim", opts = {}, enabled = true },
     {

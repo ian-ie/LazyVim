@@ -1,4 +1,14 @@
 {
+    "cmd": {
+        "scope": "lua",
+        "prefix": "cmd",
+        "description": "mgr cmd",
+        "body": [
+            "function CMD.${1:sname}(${2:args})",
+            "\t${3:--code}",
+            "end"
+        ]
+    },
     "requset": {
         "scope": "lua",
         "prefix": "sreq",
@@ -22,6 +32,41 @@
             "return ${TM_FILENAME_BASE}"
         ],
         "description": "文件名的tclass模板"
+    },
+    "cs": {
+        "scope": "lua",
+        "prefix": "cs",
+        "body": [
+            "--- @class ${TM_FILENAME_BASE}:TCLASS, CrossGameBaseSvr",
+            "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\", CrossGameBaseSvr)",
+            "",
+            "function ${TM_FILENAME_BASE}:init()",
+            "\t -- init code",
+            "end",
+            "",
+            "function ${TM_FILENAME_BASE}:startGame(allSvrChanged)",
+            "\tsysLog.info(\"${TM_FILENAME_BASE}:startGame\")",
+            "end",
+            "",
+            "function ${TM_FILENAME_BASE}:reloadGame()",
+            "\tsysLog.info(\"${TM_FILENAME_BASE}:reloadGame\")",
+            "end",
+            "",
+            "function ${TM_FILENAME_BASE}:rewardGame()",
+            "\tsysLog.info(\"${TM_FILENAME_BASE}:rewardGame\")",
+            "end",
+            "",
+            "function ${TM_FILENAME_BASE}:finishGame()",
+            "\tsysLog.info(\"${TM_FILENAME_BASE}:finishGame\")",
+            "end",
+            "",
+            "function ${TM_FILENAME_BASE}:delGame()",
+            "\tsysLog.info(\"${TM_FILENAME_BASE}:delGame\")",
+            "end",
+            "",
+            "return ${TM_FILENAME_BASE}"
+        ],
+        "description": "CrossGameService"
     },
     "ff": {
         "prefix": "ff",
