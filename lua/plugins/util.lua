@@ -1,5 +1,50 @@
 return {
     {
+        "cshuaimin/ssr.nvim",
+        keys = {
+            {
+                "<leader>fS",
+                function()
+                    require("ssr").open()
+                end,
+                desc = "ssr",
+                mode = { "n", "x" },
+            },
+        },
+
+        config = function()
+            require("ssr").setup({
+                border = "rounded",
+                min_width = 50,
+                min_height = 5,
+                max_width = 120,
+                max_height = 25,
+                adjust_window = true,
+                keymaps = {
+                    close = "q",
+                    next_match = "n",
+                    prev_match = "N",
+                    replace_confirm = "<cr>",
+                    replace_all = "<leader><cr>",
+                },
+            })
+        end,
+    },
+    {
+        "chrisgrieser/nvim-rip-substitute",
+        cmd = "RipSubstitute",
+        keys = {
+            {
+                "<leader>fs",
+                function()
+                    require("rip-substitute").sub()
+                end,
+                mode = { "n", "x" },
+                desc = " rip substitute",
+            },
+        },
+    },
+    {
         "LintaoAmons/bookmarks.nvim",
         dependencies = {
             { "nvim-telescope/telescope.nvim" },

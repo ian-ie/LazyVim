@@ -32,3 +32,7 @@ local skynet = require("skynet")
 local sysLog = require("sysLog")
 local util = require("util")
 local JSON = require("cjson")
+
+-- created: {{_date_}}
+sysLog.info("execute hotfix {{_file_name_}}")
+{{_cursor_}}

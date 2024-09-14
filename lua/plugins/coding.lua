@@ -111,6 +111,7 @@ return {
     },
     {
         "michaelb/sniprun",
+        enabled = false,
         branch = "master",
 
         build = "sh install.sh",
@@ -124,9 +125,9 @@ return {
         end,
         keys = {
             { "<leader>rf", "<cmd>%SnipRun<cr>", desc = "run file" },
-            { "<leader>rs", "<Plug>SnipRun", desc = "run snip" },
+            { "<leader>rr", "<Plug>SnipRun", desc = "run snip" },
             { "<leader>rc", "<Plug>SnipClose", desc = "close" },
-            { "<leader>cr", "<Plug>SnipReset", desc = "reset" },
+            { "<leader>rC", "<Plug>SnipReset", desc = "reset" },
             { "<leader>r", "<Plug>SnipRun", desc = "run", mode = "v" },
         },
     },
