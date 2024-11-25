@@ -1,4 +1,11 @@
 return {
+    -- Lua
+    {
+        "shortcuts/no-neck-pain.nvim",
+        version = "*",
+        keys = { { "<leader>z", "<cmd>NoNeckPain<cr>", desc = "Zen Mode" } },
+    },
+
     {
         "cshuaimin/ssr.nvim",
         keys = {
@@ -85,6 +92,7 @@ return {
             { "<LocalLeader>n", "<cmd>Neorg index<cr>", desc = "Neorg Index" },
             { "<LocalLeader>r", "<cmd>Neorg return<cr>", desc = "Neorg Return" },
             { "<LocalLeader>N", "<Plug>(neorg.dirman.new-note)", desc = "New Note" },
+            { "<LocalLeader><space>", "<Plug>(neorg.qol.todo-items.todo.task-cycle)", desc = "Task Cycle" },
         },
         config = function()
             require("neorg").setup({
@@ -111,7 +119,12 @@ return {
             { "<LocalLeader>ce", "<cmd>CodiExpand<cr>", desc = "Code Expand" },
         },
     },
-    { "arnamak/stay-centered.nvim", opts = {}, enabled = true },
+    {
+        "arnamak/stay-centered.nvim",
+        opts = {},
+        enabled = true,
+    },
+
     {
         "JuanZoran/Trans.nvim",
         build = function()

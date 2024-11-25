@@ -24,3 +24,5 @@ vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Vsplit Window", remap = tr
 vim.keymap.set("n", "<leader>wo", "<C-W>o", { desc = "Window Only", remap = true })
 
 vim.keymap.set("n", "<leader>E", "<cmd>OpenInDOpus<cr>", { desc = "Open In Dopus" })
+
+vim.keymap.set("n", "<leader>tp", ":InsertDebugLog<CR>", { desc = "Insert Debug Log" })

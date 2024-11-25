@@ -111,7 +111,7 @@ return {
     },
     {
         "michaelb/sniprun",
-        enabled = false,
+        enabled = true,
         branch = "master",
 
         build = "sh install.sh",
@@ -124,11 +124,36 @@ return {
             })
         end,
         keys = {
-            { "<leader>rf", "<cmd>%SnipRun<cr>", desc = "run file" },
-            { "<leader>rr", "<Plug>SnipRun", desc = "run snip" },
-            { "<leader>rc", "<Plug>SnipClose", desc = "close" },
-            { "<leader>rC", "<Plug>SnipReset", desc = "reset" },
-            { "<leader>r", "<Plug>SnipRun", desc = "run", mode = "v" },
+            { "<Leader>rf", "<cmd>%SnipRun<cr>", desc = "run file" },
+            { "<Leader>rr", "<Plug>SnipRun", desc = "run snip" },
+            { "<Leader>rc", "<Plug>SnipClose", desc = "close" },
+            { "<Leader>rr", "<Plug>SnipReset", desc = "reset" },
+            { "<Leader>r", "<Plug>SnipRun", desc = "run", mode = "v" },
+        },
+    },
+
+    -- blink config
+    {
+        "saghen/blink.cmp",
+        -- add fittencode.nvim to dependencies
+        dependencies = {
+            { "luozhiya/fittencode.nvim" },
+        },
+        opts = {
+            -- add fittencode to sources
+            sources = {
+                completion = {
+                    enabled_providers = { "lsp", "path", "snippets", "buffer", "fittencode" },
+                },
+
+                -- set custom providers with fittencode
+                providers = {
+                    fittencode = {
+                        name = "fittencode",
+                        module = "fittencode.sources.blink",
+                    },
+                },
+            },
         },
     },
 }
