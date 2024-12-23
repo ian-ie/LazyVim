@@ -2,21 +2,10 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
-            -- colorscheme = "catppuccin-macchiato",
+            -- colorscheme = "catppuccin",
         },
     },
-    {
-        "catppuccin/nvim",
-        opts = {
-            flavor = "macchiato",
-            term_colors = true,
-            dim_inactive = {
-                enabled = true, -- dims the background color of inactive window
-                shade = "dark",
-                percentage = 0.15, -- percentage of the shade to apply to the inactive window
-            },
-        },
-    },
+
     {
         "hedyhli/outline.nvim",
         config = function()
@@ -46,6 +35,10 @@ return {
 
     {
         "saghen/blink.cmp",
+        version = "v0.7.6",
+        dependencies = {
+            { "luozhiya/fittencode.nvim" },
+        },
         opts = {
             keymap = {
                 preset = "enter",
@@ -55,6 +48,19 @@ return {
                 },
                 ["<C-j>"] = { "select_next", "fallback" },
                 ["<C-k>"] = { "select_prev", "fallback" },
+            },
+            sources = {
+                completion = {
+                    enabled_providers = { "lsp", "path", "snippets", "buffer", "fittencode" },
+                },
+
+                -- set custom providers with fittencode
+                providers = {
+                    fittencode = {
+                        name = "fittencode",
+                        module = "fittencode.sources.blink",
+                    },
+                },
             },
         },
     },

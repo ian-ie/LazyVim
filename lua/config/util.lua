@@ -22,10 +22,21 @@ local function insert_debug_log()
     local prefix = (suffix:sub(-2) == "db" or suffix:find("manager")) and "self:" or "sysLog."
 
     local params = table.concat(method_info.parameters, ",")
-    local log_string = string.format('%sdebug("%s:", %s)', prefix, method_info.method_name, params)
+    local log_string
 
-    -- 插入到下一行
-    vim.api.nvim_put({ log_string }, "l", true, false)
+    -- 判断是否有参数
+    if #method_info.parameters > 0 then
+        log_string = string.format('%sdebug("%s:", %s)', prefix, method_info.method_name, params)
+    else
+        log_string = string.format('%sdebug("%s:")', prefix, method_info.method_name)
+    end
+
+    -- 获取当前行的缩进
+    local current_line = vim.api.nvim_get_current_line()
+    local indent = current_line:match("^(%s*)") -- 获取当前行开头的空白字符
+
+    -- 插入到下一行，将缩进添加到日志字符串
+    vim.api.nvim_put({ indent .. log_string }, "l", true, false)
 end
 
 vim.api.nvim_create_user_command("InsertDebugLog", function()

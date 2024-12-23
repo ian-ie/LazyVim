@@ -84,7 +84,7 @@ return {
     {
         "chrisgrieser/nvim-various-textobjs",
         lazy = false,
-        opts = { useDefaultKeymaps = true, disableKeymaps = {} },
+        opts = { keymaps = { useDefaults = true } },
     },
     {
         "johmsalas/text-case.nvim",

@@ -37,6 +37,7 @@ local JSON = require("cjson")
 sysLog.info("execute hotfix {{_file_name_}}")
 local pu = require("logic.global.PlayerUtil")
 local hotfixTyp = "{{_file_name_}}"
+--- @param player PlayerDb
 pu.HOTFIX_FUNC[hotfixTyp] = function(player, content)
     {{_cursor_}}
 end
