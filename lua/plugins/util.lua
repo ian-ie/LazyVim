@@ -1,5 +1,4 @@
 return {
-    -- Lua
     {
         "shortcuts/no-neck-pain.nvim",
         version = "*",
@@ -110,14 +109,6 @@ return {
                 },
             })
         end,
-    },
-    {
-        "metakirby5/codi.vim",
-        cmd = "Codi",
-        keys = {
-            { "<LocalLeader>cs", "<cmd>CodiSelect<cr>", desc = "Code Select" },
-            { "<LocalLeader>ce", "<cmd>CodiExpand<cr>", desc = "Code Expand" },
-        },
     },
     {
         "arnamak/stay-centered.nvim",

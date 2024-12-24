@@ -127,7 +127,7 @@ return {
             { "<Leader>rf", "<cmd>%SnipRun<cr>", desc = "run file" },
             { "<Leader>rr", "<Plug>SnipRun", desc = "run snip" },
             { "<Leader>rc", "<Plug>SnipClose", desc = "close" },
-            { "<Leader>rr", "<Plug>SnipReset", desc = "reset" },
+            { "<Leader>rR", "<Plug>SnipReset", desc = "reset" },
             { "<Leader>r", "<Plug>SnipRun", desc = "run", mode = "v" },
         },
     },
