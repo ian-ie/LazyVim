@@ -9,8 +9,8 @@ vim.opt.softtabstop = 4
 vim.opt.cursorline = false
 vim.opt.fileencodings = "utf-8,gb2312,gbk"
 vim.opt.formatoptions = ""
-vim.opt.mouse = ""
 vim.g.snacks_animate = false
+vim.opt.mouse = ""
 
 if vim.g.neovide then
     vim.o.guifont = "JetBrainsMono Nerd Font Mono,等距更纱黑体 SC:h12"

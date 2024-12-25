@@ -35,7 +35,6 @@ return {
 
     {
         "saghen/blink.cmp",
-        version = "v0.7.6",
         dependencies = {
             { "luozhiya/fittencode.nvim" },
         },
@@ -50,10 +49,7 @@ return {
                 ["<C-k>"] = { "select_prev", "fallback" },
             },
             sources = {
-                completion = {
-                    enabled_providers = { "lsp", "path", "snippets", "buffer", "fittencode" },
-                },
-
+                default = { "lsp", "path", "snippets", "buffer", "fittencode" },
                 -- set custom providers with fittencode
                 providers = {
                     fittencode = {

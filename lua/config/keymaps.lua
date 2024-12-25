@@ -17,7 +17,6 @@ vim.keymap.set("n", "<A-5>", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Goto B
 vim.keymap.set({ "n", "x", "o" }, "H", "^")
 vim.keymap.set({ "n", "x", "o" }, "L", "$")
 vim.keymap.set({ "n", "x", "o" }, "go", "%")
-vim.keymap.set("n", "yaa", "<cmd>%y+<cr>", { desc = "copy all" })
 
 -- windows
 vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Vsplit Window", remap = true })
