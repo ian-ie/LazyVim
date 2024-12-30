@@ -15,7 +15,7 @@ return {
                     {
                         section = "terminal",
                         align = "center",
-                        cmd = "cat " .. vim.fn.stdpath("config") .. "/lua/config/header.cat",
+                        cmd = "cat " .. vim.fn.stdpath("config") .. "/header.cat",
                         height = 11,
                         width = 72,
                         padding = 1,
@@ -44,6 +44,34 @@ return {
                     { text = "", key = "c", action = "<leader>fc" },
                     { text = "", key = "s", action = "<leader>qS" },
                     { text = "", key = "q", action = ":qa" },
+                },
+            },
+
+            indent = {
+                indent = {
+                    -- hl = {
+                    --     "SnacksIndent1",
+                    --     "SnacksIndent2",
+                    --     "SnacksIndent3",
+                    --     "SnacksIndent4",
+                    --     "SnacksIndent5",
+                    --     "SnacksIndent6",
+                    --     "SnacksIndent7",
+                    --     "SnacksIndent8",
+                    -- },
+                },
+
+                scope = {
+                    hl = {
+                        "SnacksIndent1",
+                        "SnacksIndent2",
+                        "SnacksIndent3",
+                        "SnacksIndent4",
+                        "SnacksIndent5",
+                        "SnacksIndent6",
+                        "SnacksIndent7",
+                        "SnacksIndent8",
+                    },
                 },
             },
         },
