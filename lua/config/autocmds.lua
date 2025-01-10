@@ -44,25 +44,3 @@ vim.api.nvim_create_autocmd({ "BufDelete" }, {
         end)
     end,
 })
-
-vim.api.nvim_create_user_command("OpenInDOpus", function()
-    -- 获取当前文件的完整路径
-    local current_file = vim.fn.expand("%:p")
-
-    -- 将 /mnt/c/ 转换为 C:\ 并处理其余路径
-    local function convert_wsl_to_windows_path(path)
-        local drive = path:match("^/mnt/(%a)/")
-        if drive then
-            path = path:gsub("^/mnt/(%a)/", drive:upper() .. ":\\")
-            path = path:gsub("/", "\\")
-        end
-        return path
-    end
-
-    local windows_path = convert_wsl_to_windows_path(current_file)
-    local dopus_cmd = '"/mnt/e/tools/Directory Opus/dopusrt.exe" /cmd Go NEWTAB PATH="' .. windows_path .. '"'
-
-    -- 使用 nohup 将命令放到后台执行，并避免终端相关错误
-    local full_cmd = "nohup " .. dopus_cmd .. " > /dev/null 2>&1 &"
-    os.execute(full_cmd)
-end, {})
