@@ -1,13 +1,15 @@
 return {
     {
-        "OscarCreator/rsync.nvim",
-        build = "make",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-            require("rsync").setup()
-        end,
+        "otavioschwanck/arrow.nvim",
+        dependencies = {
+            { "echasnovski/mini.icons" },
+        },
+        opts = {
+            show_icons = true,
+            leader_key = ";", -- Recommended to be a single key
+            buffer_leader_key = "m", -- Per Buffer Mappings
+        },
     },
-
     {
         "shortcuts/no-neck-pain.nvim",
         version = "*",
@@ -18,7 +20,7 @@ return {
         "cshuaimin/ssr.nvim",
         keys = {
             {
-                "<leader>fS",
+                "<localleader>fS",
                 function()
                     require("ssr").open()
                 end,
@@ -50,43 +52,12 @@ return {
         cmd = "RipSubstitute",
         keys = {
             {
-                "<leader>fs",
+                "<localleader>fs",
                 function()
                     require("rip-substitute").sub()
                 end,
                 mode = { "n", "x" },
                 desc = " rip substitute",
-            },
-        },
-    },
-    {
-        "LintaoAmons/bookmarks.nvim",
-        dependencies = {
-            { "nvim-telescope/telescope.nvim" },
-            { "stevearc/dressing.nvim" }, -- optional: to have the same UI shown in the GIF
-        },
-        opts = {
-            signs = { mark = { icon = "🚩", color = "#86e1fc" } },
-        },
-        keys = {
-            {
-                "mm",
-                "<cmd>BookmarksMark<cr>",
-                desc = "Mark current line into active BookmarkList.",
-                mode = { "n", "v" },
-            },
-            {
-                "mo",
-                "<cmd>BookmarksGoto<cr>",
-                desc = "Go to bookmark at current active BookmarkList",
-                mode = { "n", "v" },
-            },
-            { "ma", "<cmd>BookmarksCommands<cr>", desc = "Find and trigger a bookmark command.", mode = { "n", "v" } },
-            {
-                "mg",
-                "<cmd>BookmarksGotoRecent<cr>",
-                desc = "Go to latest visited/created Bookmark",
-                mode = { "n", "v" },
             },
         },
     },

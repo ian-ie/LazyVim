@@ -48,19 +48,6 @@ return {
             },
 
             indent = {
-                indent = {
-                    -- hl = {
-                    --     "SnacksIndent1",
-                    --     "SnacksIndent2",
-                    --     "SnacksIndent3",
-                    --     "SnacksIndent4",
-                    --     "SnacksIndent5",
-                    --     "SnacksIndent6",
-                    --     "SnacksIndent7",
-                    --     "SnacksIndent8",
-                    -- },
-                },
-
                 scope = {
                     hl = {
                         "SnacksIndent1",
@@ -89,10 +76,10 @@ return {
     },
 
     { "folke/flash.nvim", opts = { modes = { search = { enabled = false } }, highlight = { backdrop = false } } },
-    {
-        "ahmedkhalf/project.nvim",
-        opts = { patterns = { ".git", ".svn", ".vscode", "pyvenv.cfg", "pyproject.toml" }, manual_mode = false },
-    },
+    -- {
+    --     "ahmedkhalf/project.nvim",
+    --     opts = { patterns = { ".git", ".svn", ".vscode", "pyvenv.cfg", "pyproject.toml" }, manual_mode = false },
+    -- },
     {
         "folke/noice.nvim",
         opts = {
