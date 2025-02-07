@@ -1,40 +1,47 @@
 return {
     {
-        "yetone/avante.nvim",
-        event = "VeryLazy",
-        lazy = false,
-        version = false, -- set this if you want to always pull the latest change
-        opts = {
-            provider = "deepseek",
-            vendors = {
-                deepseek = {
-                    __inherited_from = "openai",
-                    api_key_name = "DEEPSEEK_API_KEY",
-                    endpoint = "https://api.deepseek.com",
-                    model = "deepseek-chat",
-                },
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        keys = {
+            {
+                "<leader>aa",
+                "<cmd>CodeCompanionChat Toggle<cr>",
+                desc = "toggle codecompanion",
+                mode = { "n", "o", "x" },
+            },
+            {
+                "<leader>ac",
+                "<cmd>CodeCompanionActions<cr>",
+                desc = "toggle codecompanion",
             },
         },
-        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-        build = "make",
-        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            --- The below dependencies are optional,
-            "echasnovski/mini.icons", -- or echasnovski/mini.icons
-            {
-                -- Make sure to set this up properly if you have lazy=true
-                "MeanderingProgrammer/render-markdown.nvim",
-                opts = {
-                    file_types = { "markdown", "Avante" },
+        opts = {
+            opts = {
+                languages = "chinese",
+            },
+            strategies = {
+                chat = {
+                    adapter = "deepseek",
                 },
-                ft = { "markdown", "Avante" },
+                inline = {
+                    adapter = "openai",
+                },
+            },
+            adapters = {
+                openai = function()
+                    return require("codecompanion.adapters").extend("openai", {})
+                end,
+
+                deepseek = function()
+                    return require("codecompanion.adapters").extend("deepseek", {})
+                end,
             },
         },
     },
+
     {
         "kawre/leetcode.nvim",
         build = ":TSUpdate html",

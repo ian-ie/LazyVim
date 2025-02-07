@@ -21,3 +21,4 @@ vim.keymap.set({ "n", "x", "o" }, "go", "%")
 -- windows
 vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Vsplit Window", remap = true })
 vim.keymap.set("n", "<leader>wo", "<C-W>o", { desc = "Window Only", remap = true })
+vim.keymap.set("n", "<leader>p", ":FormatJsonPaste<CR>", { desc = "Paste FormatJson" })
