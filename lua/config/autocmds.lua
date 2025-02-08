@@ -62,17 +62,19 @@ vim.api.nvim_create_user_command("FormatJsonPaste", function()
     -- 禁用当前缓冲区的自动格式化
     vim.b.autoformat = false
 
-    -- 获取系统剪贴板的内容（适用于 WSL）
-    local handle = io.popen("powershell.exe Get-Clipboard -Raw")
-    if not handle then
-        print("Error: Failed to open clipboard")
-        return
+    local json = nil
+    if vim.g.neovide then
+        json = vim.fn.getreg("+")
+    else
+        local handle = io.popen("powershell.exe Get-Clipboard -Raw")
+        if not handle then
+            print("Error: Failed to open clipboard")
+            return
+        end
+        json = handle:read("*a")
+        handle:close()
     end
-    local json = handle:read("*a")
-    handle:close()
 
-    -- 去除可能存在的无效字符
-    json = json:gsub("%s+", "")
     -- 检查内容是否是有效的 JSON
     local function is_valid_json(json_str)
         local success, _ = pcall(function()
@@ -105,8 +107,7 @@ vim.api.nvim_create_user_command("FormatJsonPaste", function()
     os.remove(tmpfile)
 
     -- 确保格式化后的 JSON 是多行的
-    local formatted_lines = vim.split(formatted_json, "\n", true)
-
+    local formatted_lines = vim.split(formatted_json:gsub("\r\n", "\n"), "\n")
     -- 将格式化后的 JSON 多行粘贴到当前缓冲区
     vim.api.nvim_put(formatted_lines, "l", true, true)
 end, {})

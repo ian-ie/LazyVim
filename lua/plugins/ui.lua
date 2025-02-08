@@ -5,7 +5,7 @@ return {
             require("smoothcursor").setup({
                 fancy = { enable = true },
                 disable_float_win = true,
-                disabled_filetypes = { "TelescopePrompt", "NvimTree" },
+                disabled_filetypes = { "TelescopePrompt", "NvimTree", "json" },
             })
         end,
     },
