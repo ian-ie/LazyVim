@@ -1,15 +1,18 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-vim.opt.relativenumber = true
-vim.opt.expandtab = true
+
+-- 设置缩进
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
+-- 禁用光标行
 vim.opt.cursorline = false
+-- 设置文件编码
 vim.opt.fileencodings = "utf-8,gb2312,gbk"
-vim.opt.formatoptions = ""
+-- 禁用 snacks 动画
 vim.g.snacks_animate = false
+-- 禁用鼠标支持
 vim.opt.mouse = ""
 
 if vim.g.neovide then

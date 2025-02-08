@@ -2,7 +2,13 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
-vim.api.nvim_create_autocmd("FileType", {
+-- 在保存文件时，设置文件格式为 Unix，以移除 ^M 符号
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    command = "setlocal fileformat=unix",
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     command = "setlocal formatoptions-=r formatoptions-=o ",
 })
