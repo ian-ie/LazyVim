@@ -20,7 +20,7 @@ return {
         },
         opts = {
             opts = {
-                languages = "chinese",
+                language = "chinese",
             },
             strategies = {
                 chat = {

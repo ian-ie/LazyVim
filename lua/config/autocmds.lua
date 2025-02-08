@@ -65,6 +65,8 @@ vim.api.nvim_create_user_command("FormatJsonPaste", function()
     local json = handle:read("*a")
     handle:close()
 
+    -- 去除可能存在的无效字符
+    json = json:gsub("%s+", "")
     -- 检查内容是否是有效的 JSON
     local function is_valid_json(json_str)
         local success, _ = pcall(function()
