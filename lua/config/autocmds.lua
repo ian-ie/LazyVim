@@ -111,3 +111,64 @@ vim.api.nvim_create_user_command("FormatJsonPaste", function()
     -- 将格式化后的 JSON 多行粘贴到当前缓冲区
     vim.api.nvim_put(formatted_lines, "l", true, true)
 end, {})
+
+local function convert_timestamp_to_china_time()
+    -- 获取光标下的单词
+    local word = vim.fn.expand("<cword>")
+
+    -- 校验是否为纯数字
+    if not word:match("^%d+$") then
+        vim.api.nvim_echo({ { "错误：非数字时间戳", "ErrorMsg" } }, true, {})
+        return
+    end
+
+    -- 校验时间戳长度
+    local length = #word
+    if length ~= 10 and length ~= 13 then
+        vim.api.nvim_echo(
+            { { "错误：时间戳应为 10 位（秒）或 13 位（毫秒）", "ErrorMsg" } },
+            true,
+            {}
+        )
+        return
+    end
+
+    -- 转换为数字并处理毫秒
+    local timestamp = tonumber(word)
+    if length == 13 then
+        timestamp = timestamp / 1000
+    end
+
+    -- 计算中国时区时间（UTC+8）
+    local success, china_time = pcall(function()
+        return os.date("!%Y-%m-%d %H:%M:%S", timestamp + 8 * 3600)
+    end)
+
+    if not success then
+        vim.api.nvim_echo({ { "错误：无效时间戳", "ErrorMsg" } }, true, {})
+        return
+    end
+
+    -- 创建悬浮窗内容
+    local formatted_time = china_time .. " (UTC+8)"
+    local util = require("vim.lsp.util")
+    local floating_bufnr, floating_win = util.open_floating_preview(
+        { formatted_time },
+        "markdown",
+        { border = "single" }
+    )
+
+    -- 设置自动关闭（5秒）
+    vim.defer_fn(function()
+        if vim.api.nvim_win_is_valid(floating_win) then
+            vim.api.nvim_win_close(floating_win, true)
+        end
+    end, 5000)
+end
+
+-- 创建用户命令
+vim.api.nvim_create_user_command(
+    "ShowChinaTime",
+    convert_timestamp_to_china_time,
+    { desc = "Convert timestamp to China timezone" }
+)
