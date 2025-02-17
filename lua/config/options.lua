@@ -14,6 +14,7 @@ vim.opt.fileencodings = "utf-8,gb2312,gbk"
 vim.g.snacks_animate = false
 -- 禁用鼠标支持
 vim.opt.mouse = ""
+vim.g.root_spec = { "lsp", { ".git", ".svn", ".vscode", ".luarc.json", "lua" }, "cwd" }
 
 if vim.g.neovide then
     vim.o.guifont = "JetBrainsMono Nerd Font Mono,等距更纱黑体 SC:h12"
