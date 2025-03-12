@@ -88,9 +88,10 @@ return {
     {
         "saghen/blink.cmp",
         dependencies = {
-            { "luozhiya/fittencode.nvim" },
+            { "luozhiya/fittencode.nvim", "Kaiser-Yang/blink-cmp-avante" },
         },
         opts = {
+
             keymap = {
                 preset = "enter",
                 ["<Tab>"] = {
@@ -101,9 +102,17 @@ return {
                 ["<C-k>"] = { "select_prev", "fallback" },
             },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "fittencode" },
+                default = { "avante", "lsp", "path", "snippets", "buffer", "fittencode" },
+                -- completion = { trigger = { prefetch_on_insert = false } },
                 -- set custom providers with fittencode
                 providers = {
+                    avante = {
+                        module = "blink-cmp-avante",
+                        name = "Avante",
+                        opts = {
+                            -- options for blink-cmp-avante
+                        },
+                    },
                     fittencode = {
                         name = "fittencode",
                         module = "fittencode.sources.blink",
