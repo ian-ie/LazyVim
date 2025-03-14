@@ -21,7 +21,7 @@ return {
         "cshuaimin/ssr.nvim",
         keys = {
             {
-                "<localleader>fS",
+                "<localleader>sS",
                 function()
                     require("ssr").open()
                 end,
@@ -53,7 +53,7 @@ return {
         cmd = "RipSubstitute",
         keys = {
             {
-                "<localleader>fs",
+                "<localleader>ss",
                 function()
                     require("rip-substitute").sub()
                 end,
