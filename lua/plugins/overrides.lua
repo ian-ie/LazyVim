@@ -88,7 +88,7 @@ return {
     {
         "saghen/blink.cmp",
         dependencies = {
-            { "luozhiya/fittencode.nvim", "Kaiser-Yang/blink-cmp-avante" },
+            { "luozhiya/fittencode.nvim", "Kaiser-Yang/blink-cmp-avante", "mikavilpas/blink-ripgrep.nvim" },
         },
         opts = {
 
@@ -100,12 +100,22 @@ return {
                 },
                 ["<C-j>"] = { "select_next", "fallback" },
                 ["<C-k>"] = { "select_prev", "fallback" },
+                ["<c-g>"] = {
+                    function()
+                        -- invoke manually, requires blink >v0.8.0
+                        require("blink-cmp").show({ providers = { "ripgrep" } })
+                    end,
+                },
             },
             sources = {
-                default = { "avante", "lsp", "path", "snippets", "buffer", "fittencode" },
+                default = { "avante", "lsp", "ripgrep", "path", "snippets", "buffer", "fittencode" },
                 -- completion = { trigger = { prefetch_on_insert = false } },
                 -- set custom providers with fittencode
                 providers = {
+                    ripgrep = {
+                        module = "blink-ripgrep",
+                        name = "Ripgrep",
+                    },
                     avante = {
                         module = "blink-cmp-avante",
                         name = "Avante",
