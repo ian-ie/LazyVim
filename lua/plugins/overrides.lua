@@ -88,10 +88,13 @@ return {
     {
         "saghen/blink.cmp",
         dependencies = {
-            { "luozhiya/fittencode.nvim", "Kaiser-Yang/blink-cmp-avante", "mikavilpas/blink-ripgrep.nvim" },
+            {
+                "luozhiya/fittencode.nvim",
+                "Kaiser-Yang/blink-cmp-avante",
+                "mikavilpas/blink-ripgrep.nvim",
+            },
         },
         opts = {
-
             keymap = {
                 preset = "enter",
                 ["<Tab>"] = {
@@ -100,12 +103,6 @@ return {
                 },
                 ["<C-j>"] = { "select_next", "fallback" },
                 ["<C-k>"] = { "select_prev", "fallback" },
-                ["<c-g>"] = {
-                    function()
-                        -- invoke manually, requires blink >v0.8.0
-                        require("blink-cmp").show({ providers = { "ripgrep" } })
-                    end,
-                },
             },
             sources = {
                 default = { "avante", "lsp", "ripgrep", "path", "snippets", "buffer", "fittencode" },
@@ -115,6 +112,23 @@ return {
                     ripgrep = {
                         module = "blink-ripgrep",
                         name = "Ripgrep",
+                        opts = {
+                            prefix_min_len = 5,
+                            toggles = {
+                                -- The keymap to toggle the plugin on and off from blink
+                                -- completion results. Example: "<leader>tg"
+                                on_off = "<leader>tg",
+                            },
+                        },
+                        transform_items = function(_, items)
+                            for _, item in ipairs(items) do
+                                -- example: append a description to easily distinguish rg results
+                                item.labelDetails = {
+                                    description = "(rg)",
+                                }
+                            end
+                            return items
+                        end,
                     },
                     avante = {
                         module = "blink-cmp-avante",

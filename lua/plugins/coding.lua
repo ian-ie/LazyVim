@@ -1,12 +1,51 @@
 return {
     {
+        "olimorris/codecompanion.nvim",
+        config = function()
+            require("codecompanion").setup({
+                strategies = {
+                    chat = {
+                        adapter = "momoca",
+                    },
+                    inline = {
+                        adapter = "momoca",
+                    },
+                },
+                adapters = {
+                    momoca = function()
+                        return require("codecompanion.adapters").extend("openai_compatible", {
+                            env = {
+                                api_key = "MOMOCA_DEEP_SEEK_KEY",
+                                url = "https://ark.cn-beijing.volces.com/api",
+                                chat_url = "/v3/chat/completions",
+                            },
+                            schema = {
+                                model = {
+                                    default = "ep-20250214154028-jkrtk",
+                                },
+                            },
+                        })
+                    end,
+                },
+            })
+        end,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+    {
         "yetone/avante.nvim",
+        enable = false,
         event = "VeryLazy",
         version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
         opts = {
             -- add any opts here
             -- for example
             provider = "momoca",
+            windows = {
+                width = 50,
+            },
             vendors = {
                 momoca = {
                     __inherited_from = "openai",
@@ -39,23 +78,6 @@ return {
             -- "ibhagwan/fzf-lua", -- for file_selector provider fzf
             "echasnovski/mini.icons", -- or echasnovski/mini.icons
             -- "zbirenbaum/copilot.lua", -- for providers='copilot'
-            {
-                -- support for image pasting
-                "HakonHarnes/img-clip.nvim",
-                event = "VeryLazy",
-                opts = {
-                    -- recommended settings
-                    default = {
-                        embed_image_as_base64 = false,
-                        prompt_for_file_name = false,
-                        drag_and_drop = {
-                            insert_mode = true,
-                        },
-                        -- required for Windows users
-                        use_absolute_path = true,
-                    },
-                },
-            },
             {
                 -- Make sure to set this up properly if you have lazy=true
                 "MeanderingProgrammer/render-markdown.nvim",
@@ -103,6 +125,18 @@ return {
             })
         end,
     },
+    {
+        "mizlan/iswap.nvim",
+        event = "VeryLazy",
+    },
+    -- {
+    --     "gbprod/substitute.nvim",
+    --     opts = {
+    --         -- your configuration comes here
+    --         -- or leave it empty to use the default settings
+    --         -- refer to the configuration section below
+    --     },
+    -- },
     { "max397574/better-escape.nvim", opts = {} },
     { "spin6lock/vim_sproto", ft = "sproto" },
     { "echasnovski/mini.align", version = false, opts = {} },
