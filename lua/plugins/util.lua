@@ -1,5 +1,14 @@
 return {
     {
+        "atiladefreitas/dooing",
+        config = function()
+            require("dooing").setup({
+                -- your custom config here (optional)
+            })
+        end,
+    },
+
+    {
         "otavioschwanck/arrow.nvim",
         dependencies = {
             { "echasnovski/mini.icons" },
@@ -64,33 +73,33 @@ return {
     },
 
     { "toppair/reach.nvim", lazy = false, opts = { show_current = true } },
-    {
-        "nvim-neorg/neorg",
-        lazy = false,
-        version = "*",
-        keys = {
-            { "<LocalLeader>n", "<cmd>Neorg index<cr>", desc = "Neorg Index" },
-            { "<LocalLeader>r", "<cmd>Neorg return<cr>", desc = "Neorg Return" },
-            { "<LocalLeader>N", "<Plug>(neorg.dirman.new-note)", desc = "New Note" },
-            { "<LocalLeader><space>", "<Plug>(neorg.qol.todo-items.todo.task-cycle)", desc = "Task Cycle" },
-        },
-        config = function()
-            require("neorg").setup({
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.concealer"] = {},
-                    ["core.dirman"] = {
-                        config = {
-                            workspaces = {
-                                notes = "~/notes",
-                            },
-                            default_workspace = "notes",
-                        },
-                    },
-                },
-            })
-        end,
-    },
+    -- {
+    --     "nvim-neorg/neorg",
+    --     lazy = false,
+    --     version = "*",
+    --     keys = {
+    --         { "<LocalLeader>n", "<cmd>Neorg index<cr>", desc = "Neorg Index" },
+    --         { "<LocalLeader>r", "<cmd>Neorg return<cr>", desc = "Neorg Return" },
+    --         { "<LocalLeader>N", "<Plug>(neorg.dirman.new-note)", desc = "New Note" },
+    --         { "<LocalLeader><space>", "<Plug>(neorg.qol.todo-items.todo.task-cycle)", desc = "Task Cycle" },
+    --     },
+    --     config = function()
+    --         require("neorg").setup({
+    --             load = {
+    --                 ["core.defaults"] = {},
+    --                 ["core.concealer"] = {},
+    --                 ["core.dirman"] = {
+    --                     config = {
+    --                         workspaces = {
+    --                             notes = "~/notes",
+    --                         },
+    --                         default_workspace = "notes",
+    --                     },
+    --                 },
+    --             },
+    --         })
+    --     end,
+    -- },
     {
         "arnamak/stay-centered.nvim",
         opts = { skip_filetypes = { "snacks_dashboard" } },

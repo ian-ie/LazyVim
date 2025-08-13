@@ -37,4 +37,5 @@ local JSON = require("cjson")
 sysLog.info("execute hotfix {{_file_name_}}")
 
 --- @type CrossGuildSvr
-local CrossGuildSvr = CMD.getCrossGuildSvr()({ { _cursor_ } })
+local CrossGuildSvr = CMD.getCrossGuildSvr()
+{{_cursor_}}

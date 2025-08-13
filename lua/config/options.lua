@@ -18,7 +18,8 @@ vim.g.root_spec = { "lsp", { ".git", ".svn", ".vscode", ".luarc.json", "lua" }, 
 
 if vim.g.neovide then
     vim.o.guifont = "JetBrainsMono Nerd Font Mono,等距更纱黑体 SC:h12"
+    -- vim.o.guifont = "Maple Mono NF CN:h12"
     vim.g.neovide_remember_window_size = false
-    vim.g.neovide_transparency = 0.95
+    vim.g.neovide_opacity = 0.95
     vim.g.neovide_cursor_vfx_mode = "wireframe"
 end
