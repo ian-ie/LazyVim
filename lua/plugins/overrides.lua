@@ -101,14 +101,24 @@ return {
                     LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
                     "fallback",
                 },
+                ["<A-y>"] = require("minuet").make_blink_map(),
                 ["<C-j>"] = { "select_next", "fallback" },
                 ["<C-k>"] = { "select_prev", "fallback" },
             },
             sources = {
-                default = { "avante", "lsp", "ripgrep", "path", "snippets", "buffer", "fittencode" },
+                default = { "minuet", "avante", "lsp", "ripgrep", "path", "snippets", "buffer", "fittencode" },
                 -- completion = { trigger = { prefetch_on_insert = false } },
                 -- set custom providers with fittencode
                 providers = {
+                    minuet = {
+                        name = "minuet",
+                        module = "minuet.blink",
+                        async = true,
+                        -- Should match minuet.config.request_timeout * 1000,
+                        -- since minuet.config.request_timeout is in seconds
+                        timeout_ms = 3000,
+                        score_offset = 50, -- Gives minuet higher priority among suggestions
+                    },
                     ripgrep = {
                         module = "blink-ripgrep",
                         name = "Ripgrep",
@@ -143,6 +153,7 @@ return {
                     },
                 },
             },
+            completion = { trigger = { prefetch_on_insert = false } },
         },
     },
 }

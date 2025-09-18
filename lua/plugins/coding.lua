@@ -21,7 +21,7 @@ return {
                             },
                             schema = {
                                 model = {
-                                    default = "ep-20250214154028-jkrtk",
+                                    default = "deepseek-v3-1-250821",
                                 },
                             },
                         })
@@ -51,7 +51,7 @@ return {
                     __inherited_from = "openai",
                     api_key_name = "MOMOCA_DEEP_SEEK_KEY",
                     endpoint = "https://ark.cn-beijing.volces.com/api/v3",
-                    model = "ep-20250214154028-jkrtk",
+                    model = "deepseek-v3-1-250821",
                 },
                 openai = {
                     endpoint = "https://api.openai.com/v1",
@@ -72,11 +72,11 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
-            -- "echasnovski/mini.pick", -- for file_selector provider mini.pick
+            "nvim-mini/mini.pick", -- for file_selector provider mini.pick
             -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
             -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
             -- "ibhagwan/fzf-lua", -- for file_selector provider fzf
-            "echasnovski/mini.icons", -- or echasnovski/mini.icons
+            "nvim-mini/mini.icons", -- or echasnovski/mini.icons
             -- "zbirenbaum/copilot.lua", -- for providers='copilot'
             {
                 -- Make sure to set this up properly if you have lazy=true
@@ -87,6 +87,44 @@ return {
                 ft = { "markdown", "Avante" },
             },
         },
+    },
+    {
+        "milanglacier/minuet-ai.nvim",
+        config = function()
+            require("minuet").setup({
+                provider = "openai_compatible",
+                provider_options = {
+                    openai_compatible = {
+
+                        end_point = "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+                        model = "deepseek-v3-1-250821",
+                        api_key = "MOMOCA_DEEP_SEEK_KEY",
+                        name = "deepseek",
+                        optional = {
+                            max_tokens = 256,
+                            top_p = 0.9,
+                        },
+                    },
+                },
+                virtualtext = {
+                    auto_trigger_ft = {},
+                    keymap = {
+                        -- accept whole completion
+                        accept = "<A-A>",
+                        -- accept one line
+                        accept_line = "<A-a>",
+                        -- accept n lines (prompts for number)
+                        -- e.g. "A-z 2 CR" will accept 2 lines
+                        accept_n_lines = "<A-z>",
+                        -- Cycle to prev completion item, or manually invoke completion
+                        prev = "<A-[>",
+                        -- Cycle to next completion item, or manually invoke completion
+                        next = "<A-]>",
+                        dismiss = "<A-e>",
+                    },
+                },
+            })
+        end,
     },
     {
         "luozhiya/fittencode.nvim",
@@ -125,10 +163,10 @@ return {
             })
         end,
     },
-    {
-        "mizlan/iswap.nvim",
-        event = "VeryLazy",
-    },
+    -- {
+    --     "mizlan/iswap.nvim",
+    --     event = "VeryLazy",
+    -- },
     -- {
     --     "gbprod/substitute.nvim",
     --     opts = {
@@ -139,7 +177,7 @@ return {
     -- },
     { "max397574/better-escape.nvim", opts = {} },
     { "spin6lock/vim_sproto", ft = "sproto" },
-    { "echasnovski/mini.align", version = false, opts = {} },
+    { "nvim-mini/mini.align", version = false, opts = {} },
     --窗口预览goto
     {
         "rmagatti/goto-preview",
