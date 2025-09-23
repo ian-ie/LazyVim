@@ -36,7 +36,7 @@ return {
                         for _, item in ipairs(items) do
                             -- example: append a description to easily distinguish rg results
                             item.labelDetails = {
-                                description = "🤖minuet",
+                                description = "(🤖minuet)",
                             }
                         end
                         return items
@@ -53,11 +53,12 @@ return {
                             on_off = "<leader>tg",
                         },
                     },
+                    max_items = 3,
                     transform_items = function(_, items)
                         for _, item in ipairs(items) do
                             -- example: append a description to easily distinguish rg results
                             item.labelDetails = {
-                                description = "(rg)",
+                                description = "(🔍rg)",
                             }
                         end
                         return items
@@ -73,12 +74,12 @@ return {
                 fittencode = {
                     name = "fittencode",
                     module = "fittencode.sources.blink",
-
+                    score_offset = 10,
                     transform_items = function(_, items)
                         for _, item in ipairs(items) do
                             -- example: append a description to easily distinguish rg results
                             item.labelDetails = {
-                                description = "🔥fittencode",
+                                description = "(🔥fittencode)",
                             }
                         end
                         return items
