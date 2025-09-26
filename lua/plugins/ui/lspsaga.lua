@@ -6,6 +6,16 @@ return {
             symbol_in_winbar = {
                 show_file = false,
             },
+            definition = {
+                width = 0.6,
+            },
+            finder = {
+                right_width = 0.5,
+                left_width = 0.2,
+            },
+            beacon = {
+                enable = false,
+            },
         })
     end,
     dependencies = {
