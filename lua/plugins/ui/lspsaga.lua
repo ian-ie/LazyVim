@@ -13,7 +13,7 @@ return {
                 right_width = 0.5,
                 left_width = 0.2,
             },
-            beacon = {
+            ui = {
                 enable = false,
             },
         })

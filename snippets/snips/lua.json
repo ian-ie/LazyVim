@@ -1,131 +1,116 @@
 {
-    "cmd": {
-        "scope": "lua",
-        "prefix": "cmd",
-        "description": "mgr cmd",
-        "body": [
-            "function CMD.${1:sname}(${2:args})",
-            "\t${3:--code}",
-            "end"
-        ]
-    },
-    "requset": {
-        "scope": "lua",
-        "prefix": "sreq",
-        "body": [
-            "function REQUEST.${1:sprotoreq}(player, request)",
-            "\t${3:--code}",
-            "\treturn ${4:--retrun msg}",
-            "end"
-        ],
-        "description": "sproto request"
-    },
-    "fclass": {
-        "scope": "lua",
-        "prefix": "fclass",
-        "body": [
-            "--- @class ${TM_FILENAME_BASE}: TCLASS${1: ,fatherclass}",
-            "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${2:, fatherclass})\n",
-            "function ${TM_FILENAME_BASE}:init()",
-            "\t${3:-- init code}",
-            "end\n",
-            "return ${TM_FILENAME_BASE}"
-        ],
-        "description": "文件名的tclass模板"
-    },
-    "cdb": {
-        "scope": "lua",
-        "prefix": "cdb",
-        "body": [
-            "--- @class ${TM_FILENAME_BASE}: TCLASS${1: ,fatherclass}",
-            "--- @field data table",
-            "--- @field owner PlayerDb",
-            "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${2:, fatherclass})\n",
-            "function ${TM_FILENAME_BASE}:init(data, owner)",
-            "\tself.data = data",
-            "\tself.owner = owner",
-            "\tsysLog.initLog(self)",
-            "end\n",
-            "return ${TM_FILENAME_BASE}"
-        ],
-        "description": "db class模板"
-    },
-    "cs": {
-        "scope": "lua",
-        "prefix": "cs",
-        "body": [
-            "--- @class ${TM_FILENAME_BASE}:TCLASS, CrossGameBaseSvr",
-            "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\", CrossGameBaseSvr)",
-            "",
-            "function ${TM_FILENAME_BASE}:init()",
-            "\t -- init code",
-            "end",
-            "",
-            "function ${TM_FILENAME_BASE}:startGame(allSvrChanged)",
-            "\tsysLog.info(\"${TM_FILENAME_BASE}:startGame\")",
-            "end",
-            "",
-            "function ${TM_FILENAME_BASE}:reloadGame()",
-            "\tsysLog.info(\"${TM_FILENAME_BASE}:reloadGame\")",
-            "end",
-            "",
-            "function ${TM_FILENAME_BASE}:rewardGame()",
-            "\tsysLog.info(\"${TM_FILENAME_BASE}:rewardGame\")",
-            "end",
-            "",
-            "function ${TM_FILENAME_BASE}:finishGame()",
-            "\tsysLog.info(\"${TM_FILENAME_BASE}:finishGame\")",
-            "end",
-            "",
-            "function ${TM_FILENAME_BASE}:delGame()",
-            "\tsysLog.info(\"${TM_FILENAME_BASE}:delGame\")",
-            "end",
-            "",
-            "return ${TM_FILENAME_BASE}"
-        ],
-        "description": "CrossGameService"
-    },
-    "ff": {
-        "prefix": "ff",
-        "body": [
-            "function ${TM_FILENAME_BASE}:${1}()",
-            "\t${2:--code}",
-            "end"
-        ]
-    },
-    "fc": {
-        "prefix": "fc",
-        "body": [
-            "function ${TM_FILENAME_BASE}.${1}()",
-            "\t${2:--code}",
-            "end"
-        ]
-    },
-    "fn": {
-        "prefix": "fn",
-        "body": "${TM_FILENAME_BASE}"
-    },
-    "fi": {
-        "prefix": "fi",
-        "body": "--- @field "
-    },
-    "msg": {
-        "prefix": "msr",
-        "body": "msg_result(${1})"
-    },
-    "+=": {
-        "prefix": "add",
-        "body": "${1:base} = ${1} + ${2:add}"
-    },
-    "stylua": {
-        "prefix": "si",
-        "body": "-- stylua: ignore"
-    },
-    "enum": {
-        "prefix": "enum",
-        "body": [
-            "--- @enum ${1:EnumName}",
-            "${1:EnumName}={\n${2:enumItem}\n}"
-        ]
-    }
+  "cmd": {
+    "scope": "lua",
+    "prefix": "cmd",
+    "description": "mgr cmd",
+    "body": ["function CMD.${1:sname}(${2:args})", "\t${3:--code}", "end$0"]
+  },
+  "requset": {
+    "scope": "lua",
+    "prefix": "sreq",
+    "body": [
+      "function REQUEST.${1:sprotoreq}(player, request)",
+      "\t${3:--code}",
+      "\treturn ${4:--retrun msg}",
+      "end$0"
+    ],
+    "description": "sproto request"
+  },
+  "fclass": {
+    "scope": "lua",
+    "prefix": "fclass",
+    "body": [
+      "--- @class ${TM_FILENAME_BASE}: TCLASS${1: ,fatherclass}",
+      "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${2:, fatherclass})\n",
+      "function ${TM_FILENAME_BASE}:init()",
+      "\t${3:-- init code}",
+      "end\n",
+      "return ${TM_FILENAME_BASE}$0"
+    ],
+    "description": "文件名的tclass模板"
+  },
+  "cdb": {
+    "scope": "lua",
+    "prefix": "cdb",
+    "body": [
+      "--- @class ${TM_FILENAME_BASE}: TCLASS${1: ,fatherclass}",
+      "--- @field data table",
+      "--- @field owner PlayerDb",
+      "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\"${2:, fatherclass})\n",
+      "function ${TM_FILENAME_BASE}:init(data, owner)",
+      "\tself.data = data",
+      "\tself.owner = owner",
+      "\tsysLog.initLog(self)",
+      "end\n",
+      "return ${TM_FILENAME_BASE}$0"
+    ],
+    "description": "db class模板"
+  },
+  "cs": {
+    "scope": "lua",
+    "prefix": "cs",
+    "body": [
+      "--- @class ${TM_FILENAME_BASE}:TCLASS, CrossGameBaseSvr",
+      "local ${TM_FILENAME_BASE} = class(\"${TM_FILENAME_BASE}\", CrossGameBaseSvr)",
+      "",
+      "function ${TM_FILENAME_BASE}:init()",
+      "\t -- init code",
+      "end",
+      "",
+      "function ${TM_FILENAME_BASE}:startGame(allSvrChanged)",
+      "\tsysLog.info(\"${TM_FILENAME_BASE}:startGame\")",
+      "end",
+      "",
+      "function ${TM_FILENAME_BASE}:reloadGame()",
+      "\tsysLog.info(\"${TM_FILENAME_BASE}:reloadGame\")",
+      "end",
+      "",
+      "function ${TM_FILENAME_BASE}:rewardGame()",
+      "\tsysLog.info(\"${TM_FILENAME_BASE}:rewardGame\")",
+      "end",
+      "",
+      "function ${TM_FILENAME_BASE}:finishGame()",
+      "\tsysLog.info(\"${TM_FILENAME_BASE}:finishGame\")",
+      "end",
+      "",
+      "function ${TM_FILENAME_BASE}:delGame()",
+      "\tsysLog.info(\"${TM_FILENAME_BASE}:delGame\")",
+      "end",
+      "",
+      "return ${TM_FILENAME_BASE}$0"
+    ],
+    "description": "CrossGameService"
+  },
+  "ff": {
+    "prefix": "ff",
+    "body": ["function ${TM_FILENAME_BASE}:${1}()", "\t${2:--code}", "end$0"]
+  },
+  "fc": {
+    "prefix": "fc",
+    "body": ["function ${TM_FILENAME_BASE}.${1}()", "\t${2:--code}", "end$0"]
+  },
+  "fn": {
+    "prefix": "fn",
+    "body": "${TM_FILENAME_BASE}$0"
+  },
+  "fi": {
+    "prefix": "fi",
+    "body": "--- @field $0"
+  },
+  "msg": {
+    "prefix": "msr",
+    "body": "msg_result(${1})$0"
+  },
+  "+=": {
+    "prefix": "add",
+    "body": "${1:base} = ${1} + ${2:add}$0"
+  },
+  "stylua": {
+    "prefix": "si",
+    "body": "-- stylua: ignore$0"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": ["--- @enum ${1:EnumName}", "${1:EnumName}={\n${2:enumItem}\n}$0"]
+  }
 }

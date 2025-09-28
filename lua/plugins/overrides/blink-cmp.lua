@@ -9,12 +9,13 @@ return {
     },
     opts = {
         keymap = {
-            preset = "enter",
-            ["<Tab>"] = {
-                LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
-                "fallback",
-            },
-            ["<A-y>"] = require("minuet").make_blink_map(),
+            -- preset = "enter",
+            -- ["<Tab>"] = {
+            --     LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+            --     "fallback",
+            -- },
+
+            -- ["<A-y>"] = require("minuet").make_blink_map(),
             ["<C-j>"] = { "select_next", "fallback" },
             ["<C-k>"] = { "select_prev", "fallback" },
         },
@@ -74,7 +75,7 @@ return {
                 fittencode = {
                     name = "fittencode",
                     module = "fittencode.sources.blink",
-                    score_offset = 10,
+                    score_offset = 40,
                     transform_items = function(_, items)
                         for _, item in ipairs(items) do
                             -- example: append a description to easily distinguish rg results
