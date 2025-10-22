@@ -1,6 +1,6 @@
 return {
     "rmagatti/goto-preview",
-    enabled = false,
+    enabled = true,
     dependencies = "neovim/nvim-lspconfig",
     config = function()
         require("goto-preview").setup({
