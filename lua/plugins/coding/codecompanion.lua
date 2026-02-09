@@ -1,8 +1,9 @@
 return {
     "olimorris/codecompanion.nvim",
+    enable = false,
     config = function()
         require("codecompanion").setup({
-            strategies = {
+            interactions = {
                 chat = {
                     adapter = "momoca",
                 },
@@ -11,20 +12,22 @@ return {
                 },
             },
             adapters = {
-                momoca = function()
-                    return require("codecompanion.adapters").extend("openai_compatible", {
-                        env = {
-                            api_key = "MOMOCA_DEEP_SEEK_KEY",
-                            url = "https://ark.cn-beijing.volces.com/api",
-                            chat_url = "/v3/chat/completions",
-                        },
-                        schema = {
-                            model = {
-                                default = "deepseek-v3-1-250821",
+                http = {
+                    ["momoca"] = function()
+                        return require("codecompanion.adapters").extend("openai_compatible", {
+                            env = {
+                                api_key = "MOMOCA_DEEP_SEEK_KEY",
+                                url = "https://ark.cn-beijing.volces.com/api",
+                                chat_url = "/v3/chat/completions",
                             },
-                        },
-                    })
-                end,
+                            schema = {
+                                model = {
+                                    default = "deepseek-v3-2-251201",
+                                },
+                            },
+                        })
+                    end,
+                },
             },
         })
     end,

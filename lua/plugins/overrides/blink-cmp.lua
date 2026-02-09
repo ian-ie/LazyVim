@@ -20,7 +20,8 @@ return {
             ["<C-k>"] = { "select_prev", "fallback" },
         },
         sources = {
-            default = { "minuet", "avante", "lsp", "ripgrep", "path", "snippets", "buffer", "fittencode" },
+            -- default = { "minuet", "avante", "lsp", "ripgrep", "path", "snippets", "buffer", "fittencode" },
+            default = { "minuet", "avante", "lsp", "ripgrep", "path", "snippets", "buffer" },
             -- completion = { trigger = { prefetch_on_insert = false } },
             -- set custom providers with fittencode
             providers = {
