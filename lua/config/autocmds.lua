@@ -220,9 +220,9 @@ end, { desc = "切换自动滚动" })
 
 local function ai_review_git_svn()
     -- 1. 配置区
-    local api_key = os.getenv("MOMOCA_DEEP_SEEK_KEY")
-    local endpoint = "https://ark.cn-beijing.volces.com/api/v3/chat/completions"
-    local model = "deepseek-v3-2-251201"
+    local api_key = os.getenv("QWEN_KEY")
+    local endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    local model = "qwen3-max"
     local upstream = "remotes/git-svn"
 
     -- 2. 获取 Diff

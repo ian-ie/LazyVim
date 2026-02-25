@@ -2,21 +2,9 @@ return {
     "milanglacier/minuet-ai.nvim",
     config = function()
         require("minuet").setup({
-            provider = "openai_compatible",
-            provider_options = {
-                openai_compatible = {
-                    end_point = "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
-                    model = "deepseek-v3-2-251201",
-                    api_key = "MOMOCA_DEEP_SEEK_KEY",
-                    name = "deepseek",
-                    optional = {
-                        max_tokens = 256,
-                        top_p = 0.9,
-                    },
-                },
-            },
+            provider = "gemini",
             virtualtext = {
-                auto_trigger_ft = { "lua" },
+                auto_trigger_ft = {},
                 keymap = {
                     -- accept whole completion
                     accept = "<A-A>",
@@ -30,6 +18,11 @@ return {
                     -- Cycle to next completion item, or manually invoke completion
                     next = "<A-]>",
                     dismiss = "<A-e>",
+                },
+            },
+            provider_options = {
+                gemini = {
+                    model = "gemini-2.5-flash",
                 },
             },
         })

@@ -17,25 +17,27 @@ return {
         },
         -- add any opts here
         -- for example
-        provider = "momoca",
+        provider = "gemini",
         windows = {
             width = 50,
         },
         providers = {
-            momoca = {
+            deepseek = {
                 __inherited_from = "openai",
                 api_key_name = "MOMOCA_DEEP_SEEK_KEY",
                 endpoint = "https://ark.cn-beijing.volces.com/api/v3/",
                 model = "deepseek-v3-1-250821",
                 -- model = "deepseek-v3-2-251201",
             },
-            openai = {
-                endpoint = "https://api.openai.com/v1",
-                model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-                timeout = 30000, -- timeout in milliseconds
-                -- temperature = 0, -- adjust if needed
-                max_tokens = 4096,
-                api_key_name = "OPENAI_API_KEY",
+            qwen = {
+                __inherited_from = "openai",
+                api_key_name = "QWEN_KEY",
+                endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                model = "qwen3-max",
+                -- model = "deepseek-v3-2-251201",
+            },
+            gemini = {
+                model = "gemini-3-pro-preview",
             },
         },
     },
