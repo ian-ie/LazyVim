@@ -219,67 +219,27 @@ vim.keymap.set("n", "<F5>", function()
 end, { desc = "切换自动滚动" })
 
 local function ai_review_git_svn()
-<<<<<<< HEAD
-    -- 1. 配置区
-    local api_key = os.getenv("QWEN_KEY")
-    local endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-    local model = "qwen3-max"
-    local upstream = "remotes/git-svn"
-
-    -- 2. 获取 Diff
-    local handle = io.popen("git diff " .. upstream .. "..HEAD 2>/dev/null")
-=======
     local api_key = os.getenv("QWEN_KEY")
     if not api_key then
         return
     end
 
     local handle = io.popen("git diff remotes/git-svn..HEAD 2>/dev/null")
->>>>>>> a865a10 (update)
     local diff = handle:read("*a")
     handle:close()
     if not diff or diff == "" then
-<<<<<<< HEAD
-        vim.notify("未发现差异 (upstream: " .. upstream .. ")", vim.log.levels.WARN)
         return
     end
 
-    -- 3. 记录当前窗口并创建 UI 窗口
-=======
-        return
-    end
-
->>>>>>> a865a10 (update)
     local current_win = vim.api.nvim_get_current_win()
     vim.cmd("vnew")
     local bufnr = vim.api.nvim_get_current_buf()
     local winid = vim.api.nvim_get_current_win()
 
-    -- 4. 窗口与 Buffer 设置
     vim.api.nvim_set_option_value("filetype", "markdown", { buf = bufnr })
     vim.api.nvim_set_option_value("buftype", "nofile", { buf = bufnr })
-
-    -- 针对窗口的属性 (Window-local)
-    vim.wo[winid].spell = false
     vim.wo[winid].wrap = true
     vim.wo[winid].linebreak = true
-<<<<<<< HEAD
-    vim.bo[bufnr].spellcapcheck = ""
-
-    -- 5. 【关键】：光标切回原窗口
-    vim.api.nvim_set_current_win(current_win)
-
-    -- 初始化内容
-    vim.api.nvim_buf_set_lines(
-        bufnr,
-        0,
-        -1,
-        false,
-        { "# AI Code Review", "> 正在连接 DeepSeek 并传输 Diff 数据...", "" }
-    )
-
-    -- 6. 构造请求参数
-=======
     vim.api.nvim_set_current_win(current_win)
 
     vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {
@@ -288,7 +248,6 @@ local function ai_review_git_svn()
         "",
     })
 
->>>>>>> a865a10 (update)
     local payload = {
         model = "qwen3-max",
         messages = {
@@ -320,11 +279,6 @@ local function ai_review_git_svn()
     }
 
     local response_text = ""
-<<<<<<< HEAD
-
-    -- 7. 启动 Job
-=======
->>>>>>> a865a10 (update)
     vim.fn.jobstart(curl_cmd, {
         on_stdout = function(_, data)
             if data then
@@ -335,23 +289,6 @@ local function ai_review_git_svn()
                             break
                         end
 
-<<<<<<< HEAD
-                    local ok, decoded = pcall(vim.fn.json_decode, json_str)
-                    if ok and decoded.choices and decoded.choices[1].delta.content then
-                        local content = decoded.choices[1].delta.content
-                        response_text = response_text .. content
-
-                        -- 实时更新并滚动
-                        vim.schedule(function()
-                            if vim.api.nvim_buf_is_valid(bufnr) then
-                                local lines = vim.split("# AI Code Review\n\n" .. response_text, "\n")
-                                vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
-
-                                -- 【关键】：强制右侧窗口滚动
-                                if vim.api.nvim_win_is_valid(winid) then
-                                    local line_count = #lines
-                                    vim.api.nvim_win_set_cursor(winid, { line_count, 0 })
-=======
                         local ok, decoded = pcall(vim.fn.json_decode, json_str)
                         if
                             ok
@@ -368,32 +305,22 @@ local function ai_review_git_svn()
                                     if vim.api.nvim_win_is_valid(winid) then
                                         vim.api.nvim_win_set_cursor(winid, { #lines, 0 })
                                     end
->>>>>>> a865a10 (update)
                                 end
                             end)
                         end
                     end
-                elseif line:match('^{"error"') then
-                    vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, { "❌ API 错误: " .. line })
                 end
-            end
-        end,
-        on_stderr = function(_, data)
-            if data and data[1] ~= "" then
-                vim.schedule(function()
-                    vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, { "⚠️ 错误: " .. table.concat(data, " ") })
-                end)
             end
         end,
         on_exit = function()
             os.remove(tmp_file)
             vim.schedule(function()
-                vim.keymap.set("n", "q", ":close<CR>", { buffer = bufnr, silent = true })
-                -- 完成后提示一下，防止你在左侧写代码没注意到右侧写完了
-                vim.notify("Review 传输完成", vim.log.levels.INFO)
+                if vim.api.nvim_buf_is_valid(bufnr) then
+                    vim.keymap.set("n", "q", ":close<CR>", { buffer = bufnr, silent = true })
+                end
             end)
         end,
     })
 end
 
-vim.keymap.set("n", "<leader>gr", ai_review_git_svn, { desc = "DeepSeek Native Review" })
+vim.keymap.set("n", "<leader>gr", ai_review_git_svn, { desc = "Qwen Code Review" })
