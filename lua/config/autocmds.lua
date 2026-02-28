@@ -219,6 +219,7 @@ vim.keymap.set("n", "<F5>", function()
 end, { desc = "切换自动滚动" })
 
 local function ai_review_git_svn()
+<<<<<<< HEAD
     -- 1. 配置区
     local api_key = os.getenv("QWEN_KEY")
     local endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1"
@@ -227,15 +228,28 @@ local function ai_review_git_svn()
 
     -- 2. 获取 Diff
     local handle = io.popen("git diff " .. upstream .. "..HEAD 2>/dev/null")
+=======
+    local api_key = os.getenv("QWEN_KEY")
+    if not api_key then
+        return
+    end
+
+    local handle = io.popen("git diff remotes/git-svn..HEAD 2>/dev/null")
+>>>>>>> a865a10 (update)
     local diff = handle:read("*a")
     handle:close()
-
     if not diff or diff == "" then
+<<<<<<< HEAD
         vim.notify("未发现差异 (upstream: " .. upstream .. ")", vim.log.levels.WARN)
         return
     end
 
     -- 3. 记录当前窗口并创建 UI 窗口
+=======
+        return
+    end
+
+>>>>>>> a865a10 (update)
     local current_win = vim.api.nvim_get_current_win()
     vim.cmd("vnew")
     local bufnr = vim.api.nvim_get_current_buf()
@@ -249,6 +263,7 @@ local function ai_review_git_svn()
     vim.wo[winid].spell = false
     vim.wo[winid].wrap = true
     vim.wo[winid].linebreak = true
+<<<<<<< HEAD
     vim.bo[bufnr].spellcapcheck = ""
 
     -- 5. 【关键】：光标切回原窗口
@@ -264,8 +279,18 @@ local function ai_review_git_svn()
     )
 
     -- 6. 构造请求参数
+=======
+    vim.api.nvim_set_current_win(current_win)
+
+    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {
+        "# AI Code Review",
+        "> 正在生成...",
+        "",
+    })
+
+>>>>>>> a865a10 (update)
     local payload = {
-        model = model,
+        model = "qwen3-max",
         messages = {
             {
                 role = "system",
@@ -285,7 +310,7 @@ local function ai_review_git_svn()
         "curl",
         "-s",
         "-N",
-        endpoint,
+        "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
         "-H",
         "Content-Type: application/json",
         "-H",
@@ -295,20 +320,22 @@ local function ai_review_git_svn()
     }
 
     local response_text = ""
+<<<<<<< HEAD
 
     -- 7. 启动 Job
+=======
+>>>>>>> a865a10 (update)
     vim.fn.jobstart(curl_cmd, {
         on_stdout = function(_, data)
-            if not data then
-                return
-            end
-            for _, line in ipairs(data) do
-                if line:match("^data: ") then
-                    local json_str = line:gsub("^data: ", "")
-                    if json_str:match("%[DONE%]") then
-                        break
-                    end
+            if data then
+                for _, line in ipairs(data) do
+                    if line:match("^data: ") then
+                        local json_str = line:gsub("^data: ", "")
+                        if json_str:match("%[DONE%]") then
+                            break
+                        end
 
+<<<<<<< HEAD
                     local ok, decoded = pcall(vim.fn.json_decode, json_str)
                     if ok and decoded.choices and decoded.choices[1].delta.content then
                         local content = decoded.choices[1].delta.content
@@ -324,9 +351,27 @@ local function ai_review_git_svn()
                                 if vim.api.nvim_win_is_valid(winid) then
                                     local line_count = #lines
                                     vim.api.nvim_win_set_cursor(winid, { line_count, 0 })
+=======
+                        local ok, decoded = pcall(vim.fn.json_decode, json_str)
+                        if
+                            ok
+                            and decoded.choices
+                            and decoded.choices[1]
+                            and decoded.choices[1].delta
+                            and decoded.choices[1].delta.content
+                        then
+                            response_text = response_text .. decoded.choices[1].delta.content
+                            vim.schedule(function()
+                                if vim.api.nvim_buf_is_valid(bufnr) then
+                                    local lines = vim.split("# AI Code Review\n\n" .. response_text, "\n")
+                                    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+                                    if vim.api.nvim_win_is_valid(winid) then
+                                        vim.api.nvim_win_set_cursor(winid, { #lines, 0 })
+                                    end
+>>>>>>> a865a10 (update)
                                 end
-                            end
-                        end)
+                            end)
+                        end
                     end
                 elseif line:match('^{"error"') then
                     vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, { "❌ API 错误: " .. line })
